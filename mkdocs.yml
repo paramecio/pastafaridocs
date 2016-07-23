@@ -1,0 +1,7 @@
+site_name: Pastafari documentation
+pages:
+- Home: index.md
+- Installation: install.md
+- Deploying: deploying.md
+- About: about.md
+theme: readthedocs
