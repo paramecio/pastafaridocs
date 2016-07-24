@@ -111,7 +111,7 @@ Execute the next command:
 You would get this text in your terminal:
 
 `Bottle v0.12.9 server starting up (using CherryPyServer())...
-Listening on http://127.0.0.1:8080/
+Listening on http://0.0.0.0:8080/
 Hit Ctrl-C to quit.`
 
 Now enter in your browser the next url:
@@ -132,7 +132,7 @@ Enter first in pastafari directory:
 
 `cd site`
 
-Execute the next command:
+Execute the next command in other terminal:
 
 `bottle.py -b 127.0.0.1:1337 --server gevent scheduler:app`
 
