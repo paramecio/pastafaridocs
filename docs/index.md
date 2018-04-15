@@ -4,7 +4,7 @@ From here you can learn about install, use and development of this piece of free
 
 ## What is Pastafari?
 
-Pastafari is a system for control Linux/*nix servers in general with a web gui using ssh how access to hosts. With pastafari you can install, update or configure the software of multiple servers massively and parallely.
+Pastafari is a system for control Linux/*nix servers in general with a web gui using ssh for access to your hosts. With pastafari you can install, update or configure the software of multiple servers massively and parallely.
 
 Pastafari is modular and you can install new improvenments how control panels similarly to cpanel o webmin without agents in servers clients with all centralized in a admin server.
 
@@ -27,3 +27,6 @@ Pastafari is writed in Python 3.
 * Independent of Operating System and Linux distro. You can administer a Gentoo Linux that doesn't use systemd and a Debian Server with systemd and update the two servers simultaneosly easily.
 
 * Centralized, only a server rules all your hosts via ssh. 
+
+* You can close your browser and open it later for review the task.
+

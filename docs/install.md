@@ -10,11 +10,13 @@ Also, you need the next software installed  in  your os:
 
 ### Python 3.4 or later. 
 
-Pastafari should work fine in 3.3 but is tested in 3.4 and 3.5 python 3 versions.
+Pastafari should work fine in 3.3 but is tested in 3.4, 3.5 and 3.6 python 3 versions. 3.6 is recommended because have better performance. 
 
 In Debian and Ubuntu you can install Python 3 using the next command: `apt-get install python3`.
 
 In Fedora and other Red Hat derived distros you can use `yum install python3`. In RedHat/Centos 6 or 7 you need install [Ius Repos](https://ius.io/GettingStarted/) for get sane versions of python3.
+
+In actual fedora versions you shoud use dnf command.
 
 ### MySQL or MariaDB database servers. 
 
@@ -22,10 +24,10 @@ MariaDB 10.0 and later are recommended.
 
 In Debian and Ubuntu you can install MariaDB using the next command: `apt-get install mariadb-server`.
 
-In Fedora and other Red Hat derived distros you can use `yum install mariadb-server`. 
+In Fedora and other Red Hat derived distros you can use `yum install mariadb-server` or `dnf install mariadb-server` if use the last fedora version. 
 In RedHat/Centos 6 probably you need install adittional repositories for get latest versions of mariadb, but with MySQL 5.5, Pastafari should work fine.
 
-When you will install the mysql server, you should create a new user amd database for pastafari.
+When you will install the mysql server, you should create a new user database for pastafari.
 
 ### Pip
 
@@ -41,7 +43,7 @@ In Fedora and other Red Hat derived distros you can use `yum install python3-pip
 
 In Debian and Ubuntu you can install git using the next command: `apt-get install git`.
 
-In Fedora and other Red Hat derived distros you can use `yum install git`.
+In Fedora and other Red Hat derived distros you can use `yum install git` or `dnf install git`.
 
 ### Paramiko
 
@@ -81,7 +83,7 @@ When Paramecio finish the installing, a command called `paramecio` can be used f
 
 Finally, you can install pastafari with **paramecio** command:
 
-`paramecio --path site --modules https://github.com/paramecio/pastafari,https://github.com/paramecio/monit \
+`paramecio --path site --modules https://bitbucket.org/paramecio/pastafari.git \
 --domain pastafari.example.com`
 
 * --path site : this parameter will install pastafari in **site** directory.
