@@ -83,7 +83,7 @@ When Paramecio finish the installing, a command called `paramecio` can be used f
 
 Finally, you can install pastafari with **paramecio** command:
 
-`paramecio --path site --modules https://bitbucket.org/paramecio/pastafari.git \
+`paramecio --path site --modules https://bitbucket.org/paramecio/pastafari \
 --domain pastafari.example.com`
 
 * --path site : this parameter will install pastafari in **site** directory.

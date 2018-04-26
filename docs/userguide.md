@@ -50,7 +50,11 @@ About **Delete**, this option delete the server **but doesn't delete the pastafa
 
 You have a series of links above list that are useful for filter the servers by different criteria. Above list you have also a selectable list where you can choose the group where you want to work.
 
-### Execute task.
+- **Servers down**
+
+A filter where is showed a list with servers down.
+
+- **Servers heavily loaded**
 
 ## Dashboard.
 
