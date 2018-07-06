@@ -73,7 +73,7 @@ Install it with:
 
 Pastafari need a web framework called Paramecio. You can install this framework using the next command in your server:
 
-`pip3 install git+https://github.com/paramecio/parameciofm`
+`pip3 install git+https://bitbucket.org/paramecio/parameciofm`
 
 This command will install in your server paramecio framework with its dependencies.
 
