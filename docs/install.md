@@ -4,23 +4,27 @@ This guide give you step by step for install pastafari sucessfully.
 
 ## Requirements
 
-For install pastafari you need a server preferably with GNU/Linux installed. Pastafari is tested normally in Debian derivated how Ubuntu, and Red hat derivated distros how Centos or Fedora but should work fine in FreeBSD, MacOSX and other *nix like operating systems.
+For install pastafari you need a server preferably with GNU/Linux installed. Pastafari is tested normally in Debian, Red hat derivated distros how Centos Stream or Fedora but should work in FreeBSD, MacOSX and others but don't have any support.
+
+## OS
+
+For base working you can use **Debian 11-12, Fedora 38 and later, Centos Stream 9, Alma Linux 9, Rocky Linux 9, Arch Linux**. 
 
 Also, you need the next software installed  in  your os:
 
-### Python 3.4 or later. 
+### Python 3.9 or later. 
 
-Pastafari should work fine in 3.3 but is tested in 3.4, 3.5 and 3.6 python 3 versions. 3.6 is recommended because have better performance. 
+Pastafari should work fine in 3.6 to later python 3 versions. Last python version is recommended. 
 
-In Debian and Ubuntu you can install Python 3 using the next command: `apt-get install python3`.
+In Debian or Ubuntu you can install Python 3 using the next command: `apt-get install python3`.
 
-In Fedora and other Red Hat derived distros you can use `yum install python3`. In RedHat/Centos 6 or 7 you need install [Ius Repos](https://ius.io/GettingStarted/) for get sane versions of python3.
+In Fedora and other Red Hat derived distros you can use `yum install python3`. 
 
 In actual fedora versions you shoud use dnf command.
 
 ### MySQL or MariaDB database servers. 
 
-MariaDB 10.0 and later are recommended.
+MariaDB 10.2 and later are recommended.
 
 In Debian and Ubuntu you can install MariaDB using the next command: `apt-get install mariadb-server`.
 
@@ -35,7 +39,9 @@ Pip is the package manager of python. You can use the package manager of your os
 
 In Debian and Ubuntu you can install pip using the next command: `apt-get install python3-pip`.
 
-In Fedora and other Red Hat derived distros you can use `yum install python3-pip`. Of course, the command can change if you use Centos 6/7 with **Ius repos**.
+In Fedora and other Red Hat derived distros you can use `yum install python3-pip` or `dnf install python3-pip`. 
+
+### Virtualenv
 
 ### Git
 
@@ -53,13 +59,17 @@ Install it with:
 
 `pip3 install paramiko`
 
-### Gevent
+### Redis
 
-Gevent is a python module used for get async improvements in your python scripts. Pastafari use it in the task ssh part.
+Redis is a database that can be used for caching things. Also can be used for send messages to other applications. Pastafari use it for send message to RQ server
+
+### RQ
+
+RQ is a python module used for get async improvements in your python scripts. Pastafari use it in the task ssh part.
 
 Install it with:
 
-`pip3 install gevent`
+`pip3 install rq`
 
 ### Requests
 
@@ -73,21 +83,22 @@ Install it with:
 
 Pastafari need a web framework called Paramecio. You can install this framework using the next command in your server:
 
-`pip3 install git+https://bitbucket.org/paramecio/parameciofm`
+`pip3 install git+https://git.cuchulu.com/paramecio/paramecio2fm.git`
 
 This command will install in your server paramecio framework with its dependencies.
 
-When Paramecio finish the installing, a command called `paramecio` can be used for install Pastafari.
+When Paramecio finish the installing, a command called `paramecio2` can be used for install Pastafari.
 
 ## Install Pastafari
 
 Finally, you can install pastafari with **paramecio** command:
 
-`paramecio --path site --modules https://bitbucket.org/paramecio/pastafari \
+`paramecio2 --path site --modules https://git.cuchulu.com/paramecio/pastafari2.git \
 --domain pastafari.example.com`
 
 * --path site : this parameter will install pastafari in **site** directory.
-* --modules https://github.com/paramecio/pastafari,https://github.com/paramecio/monit : this parameter will install **pastafari** and **monit** modules in paramecio from github. Of course, Pastafari is the module used how Pastafari core. Monit module is used for monitoritation tasks of servers.
+* --modules https://github.com/paramecio/pastafari: this parameter will install **pastafari** module in paramecio from our git repo.
+
 * --domain pastafari.example.com : Is the domain where pastafari webserver is located and is used for things how recovery password. Of course you need change **pastafari.example.com** for your domain.
 
 When you execute the command, a series of questions will be showed, you need answer to all questions correctly if you want that pastafari will be installed correctly. If you get error, you need make a clean installation dropping the **site** directory and database if it was created.
@@ -108,17 +119,21 @@ Enter first  in pastafari directory:
 
 Execute the next command:
 
-`python3 index.py`
+`flask run --debug`
 
 You would get this text in your terminal:
 
-`Bottle v0.12.9 server starting up (using CherryPyServer())...
-Listening on http://0.0.0.0:8080/
-Hit Ctrl-C to quit.`
+` \* Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ \* Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ \* Restarting with watchdog (inotify)
+ \* Debugger is active!
+ \* Debugger PIN: XXX-XXX-XXX`
 
 Now enter in your browser the next url:
 
-`http://localhost:8080`
+`http://localhost:5000`
 
 If you get this image:
 
@@ -136,13 +151,14 @@ Enter first in pastafari directory:
 
 Execute the next command in other terminal:
 
-`bottle.py -b 127.0.0.1:1337 --server gevent scheduler:app`
+`rq worker`
 
 If this message  is showed without errors:
 
-`Bottle v0.12.9 server starting up (using GeventServer())...
-Listening on http://127.0.0.1:1337/
-Hit Ctrl-C to quit.`
+`01:41:00 Worker rq:worker:XXXXXXXXX started with PID 111111, version 1.15.1
+01:41:00 Subscribing to channel rq:pubsub:XXXXXX
+01:41:00 *** Listening on default...
+01:41:00 Cleaning registries for queue: default`
 
 The task server was installed correctly!!!.
 
@@ -152,7 +168,7 @@ For complete deployment (booting the services in boot for example), view [this s
 
 For finish the installation you need put this url in your browser:
 
-`http://localhost:8080/admin`
+`http://localhost:5000/admin`
 
 You will get this image:
 
@@ -168,4 +184,6 @@ When you finish this step,you will be redirected to login screen. Login and fina
 
 You can learn now how add servers, make tasks in your servers, etc.
 
+## Other install options
 
+### Docker, Podman

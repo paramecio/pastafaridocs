@@ -8,13 +8,13 @@ Pastafari is a system for control Linux/*nix servers in general with a web gui u
 
 Pastafari is modular and you can install new improvenments how control panels similarly to cpanel o webmin without agents in servers clients with all centralized in a admin server.
 
-Is based in a web framework called [Paramecio](https://www.paramecioproject.org), that is based in [Mako](http://www.makotemplates.org/) and [Bottle](http://bottlepy.org/) how wsgi server.
+Is based in a web framework called [Paramecio](https://git.cuchulu.com/paramecio/paramecio2fm), that is based in [Mako](http://www.makotemplates.org/) and [Flask](https://flask.palletsprojects.com/) how wsgi server.
 
 Pastafari is writed in Python 3.
 
 ## Features
 
-* Pastafari is clean. You don't need install in your servers other thing that python3, No more control panels in the same server that all people can access.
+* Pastafari is clean. You don't need install in your servers other thing that python3 and different modules. No more control panels in the same server that all people can access.
 
 * Modular. You can add to Pastafari different modules for add more power. You can reconvert Pastafari in an alternative for CPanel or Plesk without need multiples license.
 
